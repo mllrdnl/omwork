@@ -4,8 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function AddStudent() {
 
-  
-
     const [listOfUsers, setListOfUsers] = useState([]);
     const [name, setName] = useState("");
     const [age, setAge] = useState(0);
