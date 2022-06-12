@@ -1,70 +1,54 @@
 import './App.css';
 import { useState, useEffect } from "react";
 import Axios from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import MainNavbar from './components/Navbar';
+import Logo from './MCW_logo_updatedcolors.png';
+import React from 'react';
+import AddStudent from './views/newStudent';
+import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 
 function App() {
 
-  const [listOfUsers, setListOfUsers] = useState([]);
-  const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
-  const [username, setUsername] = useState("");
+  const [isShown, setIsShown] = useState(false);
 
-  useEffect(() => {
-    Axios.get("http://localhost:3001/getUsers").then((response) => {
-      setListOfUsers(response.data)
-    })
-  }, [])
-
-  const createUser = () => {
-    Axios.post("http://localhost:3001/createUser", {
-      name: name, 
-      age: age, 
-      username: username,
-    }).then((response) => {
-      setListOfUsers([...listOfUsers, {name: name, 
-        age: age, 
-        username: username,}])
-    });
-  };
+  const handleClick = event => {
+    setIsShown(current => !current);
+  }
 
   return (
     <div className="App">
-      <div className="usersDispaly">
-        {listOfUsers.map((user) => {
-          return (
-          <div> 
-            <h1>Name: {user.name}</h1>
-            <h1>Age: {user.age}</h1>
-            <h1>Username: {user.username}</h1>
-          </div>
-          )
-        })}
-      </div>
+      <MainNavbar/>
+      <div className="homebody">
+        <Container>
+          <Row><Col></Col>
+            <Col sm>
+              <Image src={Logo} alt="mindful child wellness logo, child sitting in a meditating position with eyes closed" fluid="true"></Image>
+            </Col>
+            <Col></Col>
+          </Row>
 
-      <div>
-        <input 
-        type="text" 
-        placeholder="Name..." 
-        onChange={(event) => {
-          setName(event.target.value);
-        }}
-        />
-        <input 
-        type="number" 
-        placeholder="Age..."
-        onChange={(event) => {
-          setAge(event.target.value);
-        }} 
-        />
-        <input 
-        type="text" 
-        placeholder="Username..."
-        onChange={(event) => {
-          setUsername(event.target.value);
-        }} 
-        />
-        <button onClick={createUser}> Create User </button>
+          <Row className="my-3">
+            <Col></Col>
+            <Col>
+            <Button onClick={ handleClick }>Add Student</Button>
+            </Col>
+            <Col>
+            <Button>Assign OmWork</Button>
+            </Col>
+            <Col></Col>
+          </Row>
 
+          <Row>
+            <Col>
+            {isShown && <AddStudent />}
+            </Col>
+          </Row>
+
+
+
+        </Container>
+       
         </div>  
 
     </div>
