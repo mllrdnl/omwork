@@ -5,9 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function AddStudent() {
 
     const [listOfUsers, setListOfUsers] = useState([]);
-    const [name, setName] = useState("");
+    const [childName, setChildName] = useState("");
     const [age, setAge] = useState(0);
     const [username, setUsername] = useState("");
+    const [parentOneFirst, setParentOneFirst] = useState("");
+    const [parentOneLast, setParentOneLast] = useState("");
+    const [parentOneEmail, setParentOneEmail] = useState("");
   
     useEffect(() => {
       Axios.get("http://localhost:3001/getUsers").then((response) => {
@@ -17,39 +20,141 @@ function AddStudent() {
   
     const createUser = () => {
       Axios.post("http://localhost:3001/createUser", {
-        name: name, 
+        childname: childName, 
         age: age, 
         username: username,
+        parentonefirst: parentOneFirst,
+        parentonelast: parentOneLast,
+        parentoneemail: parentOneEmail,
       }).then((response) => {
-        setListOfUsers([...listOfUsers, {name: name, 
+        setListOfUsers([...listOfUsers, {childname: childName, 
           age: age, 
-          username: username,}])
+          username: username,
+          parentonefirst: parentOneFirst,
+          parentonelast: parentOneLast,
+          parentoneemail: parentOneEmail,}], alert("Student Created"))
       });
     };
   
     return (
-      <div>
-        <div className="usersDispaly">
-          {listOfUsers.map((user) => {
-            return (
-            <div> 
-              <h1>Name: {user.name}</h1>
-              <h1>Age: {user.age}</h1>
-              <h1>Username: {user.username}</h1>
-            </div>
-            )
-          })}
-        </div>
+      <div className="container">
+          <div className="row">
+              <div className="col">
+                
+                  
+                  
+              </div>
+              <div className="col">
+              <label
+                for="childname"
+                className="form-label">Student's Name
+                      
+                </label>
+                  <input
+                  type="text"
+                  className="form-control"
+                  id="childname"
+                  onChange={(event) => {
+                    setChildName(event.target.value);
+                  }}
+                  />
+              </div>
+              <div className="col">
+              <label
+                for="parentonefirst"
+                className="form-label">First Name
+                      
+                </label>
+                  <input
+                  type="text"
+                  className="form-control"
+                  id="parentonefirst"
+                  onChange={(event) => {
+                    setParentOneFirst(event.target.value);
+                  }}
+                  />
+              </div>
+              <div className="col">
+              <label
+                for="parentonelast"
+                className="form-label">Last Name
+                      
+                </label>
+                  <input
+                  type="text"
+                  className="form-control"
+                  id="parentonelast"
+                  onChange={(event) => {
+                    setParentOneLast(event.target.value);
+                  }}
+                  />
+              </div>
+              <div className="col"></div>
+          </div>
+
+          <div className="row">
+              <div className="col"></div>
+              <div className="col">
+              <label
+                for="age"
+                className="form-label">Student's Age
+                      
+                </label>
+                  <input
+                  type="text"
+                  className="form-control"
+                  id="age"
+                  onChange={(event) => {
+                    setAge(event.target.value);
+                  }}
+                  />
+              </div>
+              <div className="col">
+              <label
+                for="parentOneEmail"
+                className="form-label">Parent's Email
+                      
+                </label>
+                  <input
+                  type="text"
+                  className="form-control"
+                  id="parentOneEmail"
+                  onChange={(event) => {
+                    setParentOneEmail(event.target.value);
+                  }}
+                  />
+              </div>
+              <div className="col">
+              <label
+                for="username"
+                className="form-label">Parent's Username
+                      
+                </label>
+                  <input
+                  type="text"
+                  className="form-control"
+                  id="username"
+                  onChange={(event) => {
+                    setUsername(event.target.value);
+                  }}
+                  />
+              </div>
+              <div className="col"></div>
+
+              <button type="button" className="btn btn-primary" onClick={createUser}> Create User </button>
+          </div>
+
   
-        <div>
-          <input 
+        
+          {/* 
+          <div><input 
           type="text" 
           placeholder="Name..." 
           onChange={(event) => {
             setName(event.target.value);
           }}
-          />
-          <input 
+          /> */}
+          {/* <input 
           type="number" 
           placeholder="Age..."
           onChange={(event) => {
@@ -63,11 +168,30 @@ function AddStudent() {
             setUsername(event.target.value);
           }} 
           />
-          <button onClick={createUser}> Create User </button>
+        
   
           </div>  
+          
+           </div>
+           */}
+
+
+          <div className="usersDispaly">
+          {listOfUsers.map((user) => {
+            return (
+            <div> 
+              <h1>Student's Name: {user.childname}</h1>
+              <p>Age: {user.age}</p>
+              <p>Username: {user.username}</p>
+              <p>Parent First Name: {user.parentonefirst}</p>
+              <p>Parent Last Name: {user.parentonelast}</p>
+            </div>
+            )
+          })}
+        </div>
   
-      </div>
+  </div>
+     
     );
   }
   

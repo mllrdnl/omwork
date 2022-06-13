@@ -1,5 +1,16 @@
 const mongoose = require('mongoose');
 
+const AssignmentSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true,
+    },
+    frequency: {
+        type: String,
+        required: true,
+    }
+})
+
 
 const UserSchema = new mongoose.Schema({
     childname: {
@@ -18,18 +29,20 @@ const UserSchema = new mongoose.Schema({
         type: String,
         requried: true,
     },
+    parentoneemail: {
+        type: String,
+        required: true,
+        lowercase: true,
+    },
     username: {
         type: String,
         required: true,
     },
-    password: {
-        type: String,
-        required: true,
-    },
-    assignments: {
-        type: Object,
-        required: false,
-    }
+    // password: {
+    //     type: String,
+    //     required: false,
+    // },
+    // assignments: AssignmentSchema,
 });
 
 
