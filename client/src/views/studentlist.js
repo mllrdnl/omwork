@@ -14,16 +14,16 @@ export const StudentList = () => {
 
     return(
         <div className="container">
-           
+           <div className="row">
+            <h3>Student List</h3>
+           </div>
             <table class="table">
             <thead>
                 <tr>
                 
                 <th scope="col">Student's Name</th>
-                <th scope="col">Age</th>
-                <th scope="col">Parent's First Name</th>
-                <th scope="col">Parent's Last Name</th>
-                <th scope="col">Username</th>
+                <th scope="col">Last Name</th>
+                <th scope="col-2">Homework</th>
                 </tr>
             </thead>
             
@@ -34,10 +34,9 @@ export const StudentList = () => {
                 <tr>
                 {/* <th scope="row">1</th> */}
                 <td>{user.childname}</td>
-                <td>{user.age}</td>
-                <td>{user.parentonefirst}</td>
                 <td>{user.parentonelast}</td>
-                <td>{user.username}</td>
+                <td><button type="button" class="btn btn-success">Assign</button></td>
+                <td><button type="button" class="btn btn-outline-success">Edit</button></td>
                 </tr>
                 </>
             )})}
