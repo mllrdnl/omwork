@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar, Container } from 'react-bootstrap';
+import Logo from '../MCW_logo_updatedcolors.png';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -9,15 +10,16 @@ function MainNavbar() {
         <>
   <Navbar bg="dark" variant="dark">
     <Container>
-      <Navbar.Brand href="#home">
+      <Navbar.Brand href="/">
         <img
           alt=""
-          src="/logo.svg"
+          src={Logo}
           width="30"
           height="30"
           className="d-inline-block align-top"
+          
         />{' '}
-      React Bootstrap
+      OmWork
       </Navbar.Brand>
     </Container>
   </Navbar>

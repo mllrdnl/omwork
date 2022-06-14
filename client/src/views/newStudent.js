@@ -12,11 +12,11 @@ function AddStudent() {
     const [parentOneLast, setParentOneLast] = useState("");
     const [parentOneEmail, setParentOneEmail] = useState("");
   
-    useEffect(() => {
-      Axios.get("http://localhost:3001/getUsers").then((response) => {
-        setListOfUsers(response.data)
-      })
-    }, [])
+    // useEffect(() => {
+    //   Axios.get("http://localhost:3001/getUsers").then((response) => {
+    //     setListOfUsers(response.data)
+    //   })
+    // }, [])
   
     const createUser = () => {
       Axios.post("http://localhost:3001/createUser", {
@@ -27,22 +27,21 @@ function AddStudent() {
         parentonelast: parentOneLast,
         parentoneemail: parentOneEmail,
       }).then((response) => {
-        setListOfUsers([...listOfUsers, {childname: childName, 
-          age: age, 
-          username: username,
-          parentonefirst: parentOneFirst,
-          parentonelast: parentOneLast,
-          parentoneemail: parentOneEmail,}], alert("Student Created"))
+        // setListOfUsers(
+        //   [...listOfUsers, {childname: childName, 
+        //   age: age, 
+        //   username: username,
+        //   parentonefirst: parentOneFirst,
+        //   parentonelast: parentOneLast,
+        //   parentoneemail: parentOneEmail,}], 
+          alert("Student Created")
       });
     };
   
     return (
       <div className="container">
           <div className="row">
-              <div className="col">
-                
-                  
-                  
+              <div className="col"> 
               </div>
               <div className="col">
               <label
@@ -175,7 +174,7 @@ function AddStudent() {
            </div>
            */}
 
-
+{/* 
           <div className="usersDispaly">
           {listOfUsers.map((user) => {
             return (
@@ -188,7 +187,7 @@ function AddStudent() {
             </div>
             )
           })}
-        </div>
+        </div> */}
   
   </div>
      
